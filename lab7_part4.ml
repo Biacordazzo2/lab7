@@ -62,41 +62,6 @@ in the module; raise it if an attempt is made to examine or pop the
 top of an empty stack.
 ......................................................................*)
 
-module type STACK =
-  sig
-    exception EmptyStack
-    type 'a stack
-    val empty : 'a stack
-    val push : 'a -> 'a stack -> 'a stack
-    val top : 'a stack -> 'a
-    val pop : 'a stack -> 'a stack
-  end ;;
-
-(*......................................................................
-Exercise 4A: Complete the implementation below of this stack module
-type. First, decide how you'll represent the stack (perhaps as lists,
-though the abstraction barrier means that you're free to choose
-otherwise), then implement each of the functions in the signature
-based on your decision. You may want to look at Part 3 for
-inspiration, but this implementation may differ from your previous
-implementation based on a design choice we describe below.
-
-Then, implement each of the values in the stack signature above. We
-helped you out a little and defined `top` and `pop` for you,
-below. These rely on a helper function called `pop_helper`, which
-you'd need to implement. It should accept a stack and return a pair
-containing the first element ofthe argument stack and a stack with the
-first element removed.
-
-Notice that the `pop_helper` function does *not* appear in the
-signature, and will therefore *not* be accessible to functions outside
-of the module.
-
-You'll want to take advantage of the `EmptyStack` exception provided
-in the module; raise it if an attempt is made to examine or pop the
-top of an empty stack.
-......................................................................*)
-
 module Stack : STACK =
   struct
     exception EmptyStack
